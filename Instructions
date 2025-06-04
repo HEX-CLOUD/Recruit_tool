@@ -1,0 +1,80 @@
+# RecruitOCR: Resume Information Extractor
+
+This project extracts key information from resume images (JPG, PNG, JPEG) using OCR and uploads parsed data to a Google Sheet.
+
+---
+
+## Setup Instructions
+
+### 1. Install Required Packages
+
+Make sure you have Python 3 installed, then install dependencies:
+
+```bash
+pip install streamlit pytesseract pillow opencv-python numpy gspread oauth2client
+2. Install Tesseract OCR
+Download and install Tesseract OCR from here.
+
+Note the installation path (you will need to update the config).
+
+3. Configure Tesseract Executable Path
+In the Python script, set the TESSERACT_CMD_PATH variable to the full path of the tesseract.exe on your machine.
+
+Example (Windows):
+
+python
+Copy
+Edit
+TESSERACT_CMD_PATH = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+4. Setup Google Sheets API Credentials
+Create a Google Cloud project and enable Google Sheets API.
+
+Create a Service Account and download the JSON credentials file.
+
+Share your target Google Sheet with the service account email (found in the JSON).
+
+Save the credentials JSON file locally (e.g., creds.json).
+
+5. Update Project Configuration
+In the Python script, update the following placeholders:
+
+python
+Copy
+Edit
+GOOGLE_CREDS_JSON = "<PATH_TO_YOUR_CREDS_JSON_FILE>"
+GOOGLE_SHEET_NAME = "<YOUR_GOOGLE_SHEET_NAME>"
+Example:
+
+python
+Copy
+Edit
+GOOGLE_CREDS_JSON = "creds.json"
+GOOGLE_SHEET_NAME = "RecruitmentData"
+6. Keep Credentials Private
+Do NOT upload your creds.json file to any public repository.
+
+Add the following line to your .gitignore file to avoid committing sensitive files:
+
+pgsql
+Copy
+Edit
+creds.json
+7. Run the App
+Run the Streamlit app locally with:
+
+bash
+Copy
+Edit
+streamlit run your_script_name.py
+Upload a resume image via the app interface, verify extracted info, and upload it to your Google Sheet.
+
+Notes
+This app works with image files (JPG, PNG, JPEG) only.
+
+Google Sheets API requires correct sharing permissions for the service account.
+
+Modify or extend regex patterns and skill lists as needed for your use case.
+
+For production deployment, securely manage secrets and credentials.
+
+If you have any questions or issues, feel free to open an issue or contact me.
