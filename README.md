@@ -9,3 +9,4 @@ This project extracts resume info from images and uploads it to Google Sheets.
 
 ## Notes
 - `creds.json` is ignored for security.
+- read the instructions for further info
